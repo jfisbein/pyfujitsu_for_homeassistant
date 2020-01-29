@@ -31,8 +31,8 @@ _LOGGER = logging.getLogger(__name__)
 REQUIREMENTS = ['pyfujitsu==0.9.17']
 
 # Values from web interface
-MIN_TEMP = 16
-MAX_TEMP = 30
+MIN_TEMP = 17
+MAX_TEMP = 24
 
 SUPPORT_FLAGS = SUPPORT_FAN_MODE | SUPPORT_SWING_MODE | SUPPORT_TARGET_TEMPERATURE
 
