@@ -7,6 +7,6 @@
       "@Mmodarre",
       "@xerxes87"
   ],
-  "requirements": ["pyfujitsu==0.9.1"],
+  "requirements": ["pyfujitsu==0.9.17"],
   "homeassistant": "0.96.0"
 }
