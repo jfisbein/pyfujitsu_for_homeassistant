@@ -1,3 +1,4 @@
 {
-  "name": "Fujitsu General Heat Pump"
+  "name": "Fujitsu General Heat Pump",
+  "iot_class": "Cloud Polling"
 }
