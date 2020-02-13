@@ -1,12 +1,11 @@
 {
-  "domain": "https://github.com/colino17/pyfujitsu_for_homeassistant",
-  "name": "fujitsu_general_heatpump",
+  "domain": "fujitsu_general_heatpump",
+  "name": "Fujitsu General Heat Pump",
   "documentation": "https://github.com/colino17/pyfujitsu_for_homeassistant/blob/master/README.md",
   "dependencies": [],
   "codeowners": [
       "@Mmodarre",
       "@xerxes87"
   ],
-  "requirements": ['https://github.com/colino17/pyfujitsu/archive/0.9.17.zip#pyfujitsu==0.9.17'],
-  "homeassistant": "0.96.0"
+  "requirements": ["https://github.com/colino17/pyfujitsu/archive/0.9.17.zip#pyfujitsu==0.9.17"],
 }
