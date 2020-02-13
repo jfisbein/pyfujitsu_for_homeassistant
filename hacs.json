@@ -1,5 +1,5 @@
 {
-  "name": "Fujitsu Climate Control",
+  "name": "fujitsu_general_heatpump",
   "homeassistant": "0.105.0",
   "domains": ["climate"],
 }
