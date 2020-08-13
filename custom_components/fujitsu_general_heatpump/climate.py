@@ -24,11 +24,11 @@ from homeassistant.const import (
     ATTR_TEMPERATURE, CONF_USERNAME, CONF_PASSWORD, TEMP_CELSIUS)
 import homeassistant.helpers.config_validation as cv
 
-__version__ = '0.9.18' 
+__version__ = '0.9.19' 
 
 _LOGGER = logging.getLogger(__name__)
 
-REQUIREMENTS = ['pyfujitsu==0.9.18']
+REQUIREMENTS = ['pyfujitsu==0.9.19']
 
 # Values from web interface
 MIN_TEMP = 17
