@@ -85,7 +85,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     _LOGGER.debug("FujitsuClimate setup_platform fine")
 
 
-class FujitsuClimate(ClimateDevice):
+class FujitsuClimate(ClimateEntity):
     """Representation of a E-Thermostaat device."""
 
     def __init__(self, api, dsn):
