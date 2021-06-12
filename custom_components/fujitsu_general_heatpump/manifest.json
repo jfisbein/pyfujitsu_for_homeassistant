@@ -4,9 +4,7 @@
   "version": "0.9.19",
   "documentation": "https://github.com/colino17/pyfujitsu_for_homeassistant/blob/master/README.md",
   "dependencies": [],
-  "codeowners": [
-      "@Mmodarre",
-      "@xerxes87"
-  ],
-  "requirements": ["https://github.com/colino17/pyfujitsu/archive/0.9.19.zip#pyfujitsu==0.9.19"]
+  "codeowners": ["@Mmodarre", "@xerxes87"],
+  "requirements": ["https://github.com/colino17/pyfujitsu/archive/0.9.19.zip#pyfujitsu==0.9.19"],
+  "iot_class": "cloud_polling"
 }
