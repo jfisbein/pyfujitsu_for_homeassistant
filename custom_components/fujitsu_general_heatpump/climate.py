@@ -12,10 +12,9 @@ from homeassistant.components.climate.const import (
     HVAC_MODE_COOL,
     HVAC_MODE_AUTO,
     HVAC_MODE_DRY,
-    HVAC_MODE_FAN_ONLY,  
     SUPPORT_FAN_MODE,
     SUPPORT_SWING_MODE,
-    SUPPORT_TARGET_TEMPERATURE,  
+    SUPPORT_TARGET_TEMPERATURE,
     SUPPORT_AUX_HEAT,
     FAN_AUTO, FAN_LOW, FAN_MEDIUM, FAN_HIGH, FAN_DIFFUSE,
     CURRENT_HVAC_HEAT,
@@ -45,7 +44,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 })
 
 
-HA_FAN_TO_FUJITSU = {    
+HA_FAN_TO_FUJITSU = {
     FAN_AUTO: "Auto",
     FAN_LOW: "Low",
     FAN_MEDIUM: "Medium",
@@ -104,20 +103,20 @@ class FujitsuClimate(ClimateEntity):
         self._fan_mode = self.fan_mode
         self._hvac_mode = self.hvac_mode
         self._swing_mode = self.swing_mode
-      
+
         self._fan_modes = [FUJITSU_FAN_TO_HA['Quiet'], FAN_LOW, FAN_MEDIUM, FAN_HIGH, FAN_AUTO]
         self._hvac_modes = [HVAC_MODE_HEAT, HVAC_MODE_COOL, HVAC_MODE_AUTO, HVAC_MODE_DRY, HVAC_MODE_FAN_ONLY, HVAC_MODE_OFF]
         self._swing_modes = ['Horizontal' ,'Down', 'Unknown', 'Swing' ]
         self._on = self.is_on
-        
-        
+
+
         _LOGGER.debug("FujitsuClimate init fine.")
 
     @property
     def name(self):
         """Return the name of the thermostat."""
         return self._fujitsu_device.device_name['value']
-        
+
     @property
     def is_aux_heat_on(self):
         """Reusing is for Powerfull mode."""
@@ -165,44 +164,49 @@ class FujitsuClimate(ClimateEntity):
             self._fujitsu_device.turnOff()
         elif(self._hvac_mode != hvac_mode):
             self._fujitsu_device.changeOperationMode(hvac_mode)
-        
+
     def set_temperature(self, **kwargs):
         """Set new target temperature."""
         _LOGGER.debug("FujitsuClimate set_temperature: %s ; 2: %s", kwargs.get(ATTR_TEMPERATURE), kwargs.get(ATTR_TEMPERATURE))
         self._fujitsu_device.changeTemperature(kwargs.get(ATTR_TEMPERATURE))
-       
+
+    @property
+    def current_temperature(self):
+    	cur_temp = self._fujitsu_device._get_prop_from_json('display_temperature', self._fujitsu_device._properties)
+    	return round((cur_temp['value'] / 100 - 32) * 5/9, 1)
+        
     def update(self):
         """Retrieve latest state."""
         self._fujitsu_device.refresh_properties()
-        
+
     @property
     def fan_mode(self):
         """Return the fan setting."""
         return FUJITSU_FAN_TO_HA[self._fujitsu_device.get_fan_speed_desc()]
-        
+
     @property
     def fan_modes(self):
         """Return the list of available fan modes."""
         return self._fan_modes
-        
+
     def set_fan_mode(self, fan_mode):
         """Set fan mode."""
-        self._fujitsu_device.changeFanSpeed(HA_FAN_TO_FUJITSU[fan_mode])        
+        self._fujitsu_device.changeFanSpeed(HA_FAN_TO_FUJITSU[fan_mode])
 
     @property
     def swing_mode(self):
         """Return the fan setting."""
         return self._fujitsu_device.get_swing_mode_desc()
-    
+
     @property
     def swing_modes(self):
         """List of available swing modes."""
         return self._swing_modes
-     
+
     def set_swing_mode(self, swing_mode):
         """Set new target temperature."""
         self._fujitsu_device.changeSwingMode(swing_mode)
-        
+
 ############old stufffff
 
     @property
